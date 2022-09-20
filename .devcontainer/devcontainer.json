@@ -1,0 +1,34 @@
+{
+  "name": "Debian",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "forwardPorts": [6080, 5901],
+  "portsAttributes": {
+    "6080": {
+      "label": "Virtual Desktop (Browser)",
+      "onAutoForward": "openPreview"
+    },
+    "5901": {
+      "label": "Virtual Desktop (VNC)"
+    }
+  },
+
+  "remoteUser": "vscode",
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["Antyos.openscad", "king2021.vnc-extension"]
+    }
+  },
+
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "password": "vscode",
+      "webPort": 6080
+    }
+  },
+
+  "runArgs": ["--shm-size=1g"]
+}
